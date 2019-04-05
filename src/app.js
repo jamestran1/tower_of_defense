@@ -269,14 +269,14 @@ function StartGame() {
         
         if(window.currentLives == 0) {
             ctx.font = "50px Helvetica";
-            ctx.fillText("You Loose", 250,350, 300);
+            ctx.fillText("You Lose", 250,350, 300);
             loose = true;
             for (let i = 0; i < totalId; i++){
                 cancelAnimationFrame(totalId);
             }
             return;
         }
-        if (window.currentLives > 0 && window.currentRound > ROUND) {
+        if (window.currentLives > 0 && window.currentRound > window.ROUND) {
             ctx.font = "50px Helvetica";
             ctx.fillText("You Win", 250,350, 300);
             for (let i = 0; i < totalId; i++){
@@ -287,7 +287,7 @@ function StartGame() {
 
         ctx.fillText(`Lives: ${window.currentLives}`, 10, 50);
         ctx.fillText(`Gold: ${window.currentGold}`, 300, 50);
-        ctx.fillText(`Round: ${window.currentRound}/${ROUND}`, 550, 50);
+        ctx.fillText(`Round: ${window.currentRound}/${window.ROUND}`, 550, 50);
         ctx.closePath();
         totalId = requestAnimationFrame(loop);
     }
