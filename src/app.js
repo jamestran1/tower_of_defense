@@ -32,25 +32,25 @@ for (let i = 0; i < towers.length; i++) {
         let remain = 0;
         switch (towers[i].id) {
             case 'cannon':
-                remain = currentGold - 50;
+                remain = window.currentGold - 50;
                 break;
             case 'flamthrower':
-                remain = currentGold - 100;
+                remain = window.currentGold - 100;
                 break;
             case 'laser':
-                remain = currentGold - 250;
+                remain = window.currentGold - 250;
                 break;
             case 'matter':
-                remain = currentGold - 500;
+                remain = window.currentGold - 500;
                 break;
             case 'rocket':
-                remain = currentGold - 900;
+                remain = window.urrentGold - 900;
                 break;
             case 'shotgun':
-                remain = currentGold - 1500;
+                remain = window.currentGold - 1500;
                 break;
             case 'spazer':
-                remain = currentGold - 2000;
+                remain = window.currentGold - 2000;
                 break;
             default:
                 break;
@@ -126,11 +126,11 @@ monster.onload = () => {
         }
         if (count == n) {
             count = 0;
-            coin += 1;
-            currentGold += 150;
-            createSlimes(n,++currentRound * 2, 1 + currentRound/100);
+            window.coin += 1;
+            window.currentGold += 150;
+            createSlimes(n,++window.currentRound * 2, 1 + window.currentRound/100);
         }
-        if (currentRound >  ROUND || loose) {
+        if (window.currentRound >  window.ROUND || loose) {
             for(let i = 1; i <= id; i++) {
                 cancelAnimationFrame(i);
             }
@@ -205,6 +205,7 @@ tower_layer.onmouseup = (e) => {
         y: e.offsetY,
         tower: tower,
         tower_ctx: tower_ctx,
+        container:container,
         monsters: monsters
     }
     switch (currentTower) {
@@ -234,6 +235,7 @@ tower_layer.onmouseup = (e) => {
     }
     tower.src = '';
     currentTower = '';
+    let id;
     function loop() {
         t.scan();
         t.render();

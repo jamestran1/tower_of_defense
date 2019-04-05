@@ -17,6 +17,7 @@ export default class Tower extends Sprite {
         this.cost = options.cost;
         this.tower_ctx = options.tower_ctx;
         this.monsters = options.monsters;
+        this.container = options.container;
 
         window.currentGold -= this.cost;
         this.build();
@@ -33,7 +34,7 @@ export default class Tower extends Sprite {
         layer.style.setProperty("z-index", `${layers}`);
         layer.style.setProperty("position", "absolute");
         layer.className = "tower";
-        container.appendChild(layer);
+        this.container.appendChild(layer);
 
         let layer_ctx = layer.getContext("2d");    
         layer_ctx.clearRect(0, 0, 700, 700);
@@ -50,7 +51,7 @@ export default class Tower extends Sprite {
         bullet_layer.style.setProperty("z-index", `${layers}`);
         bullet_layer.style.setProperty("position", "absolute");
 
-        container.appendChild(bullet_layer);
+        this.container.appendChild(bullet_layer);
         this.context = bullet_layer.getContext("2d");
         layers++;
     }
